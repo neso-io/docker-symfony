@@ -18,6 +18,7 @@ services:
             - ./logs/symfony:/var/www/symfony/app/logs
         links:
             - db
+            - mail
     nginx:
         build: ./nginx
         ports:
@@ -38,3 +39,7 @@ services:
         volumes_from:
             - php
             - nginx
+    mail:
+        image: schickling/mailcatcher
+        ports:
+            - "1080:1080"
